@@ -1,11 +1,12 @@
 {
   "name": "wom-projekt-1",
   "version": "1.0.0",
-  "description": "",
+  "description": "Webbtjänster och molnteknologi",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -17,5 +18,15 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fw-teaching/wom22-projekt-1-seppatoi-lagerqvr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fw-teaching/wom22-projekt-1-seppatoi-lagerqvr/issues"
+  },
+  "homepage": "https://github.com/fw-teaching/wom22-projekt-1-seppatoi-lagerqvr#readme"
 }
