@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
 })
 
 // Create new user
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10)

@@ -35,6 +35,12 @@ app.use('/static', express.static(__dirname + '/public'))
 const usersRouter = require('./routes/users')
 app.use('/users', usersRouter)
 
+const cabinsRouter = require('./routes/cabins')
+app.use('/cabins', cabinsRouter)
+
+const bookingsRouter = require('./routes/bookings')
+app.use('/bookings', bookingsRouter)
+
 // app.use() också för att använda en router-modul
 
 // app.listen startar upp vår express-server och lyssnar på requests på en viss port.
