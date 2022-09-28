@@ -1,9 +1,11 @@
 @baseURL = http://localhost:3030
+@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM2NDMxMiwiZXhwIjoxNjc5OTE2MzEyfQ.LVNhihPC96dE6zVBFMKv7C42TIygKoN2AZ7SH3P7XIw
+
 
 ###
 
 GET {{baseURL}}/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzg1OGVmYWVlYzEyMjdhZmM4ZDIiLCJlbWFpbCI6ImphbmUuZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDE4NjU4MiwiZXhwIjoxNjY0MjcyOTgyfQ.pxPP7Mx_OXAlVjGxhS67gaDXyjLWK9HCMfK1PlzTqoM
+Authorization: Bearer {{bearer}}
 
 ###
 
@@ -11,8 +13,6 @@ POST {{baseURL}}/users/login
 Content-Type: application/json
 
 {
-    "firstname": "John",
-    "lastname": "Doe",
     "email": "john.doe@arcada.fi",
     "password": "Password123"
 }

@@ -18,7 +18,7 @@ router.post('/', authToken, async (req, res) => {
     try {
 
         const cabin = new Cabin({
-            landlord: req.body.landlord,
+            landlord: req.author.sub,
             address: req.body.address,
             size: req.body.size,
             sauna: req.body.sauna,
@@ -40,7 +40,7 @@ router.patch('/:id', authToken, async (req, res) => {
     try {
         // TODO: Fix req.landlord.sub 
         const updatedCabin = await Cabin.findOneAndUpdate(
-            { _id: req.params.id /*, landlord: req.landlord.sub */ },
+            { _id: req.params.id,  author: req.author.sub  },
             req.body,
             { new: true }
         )

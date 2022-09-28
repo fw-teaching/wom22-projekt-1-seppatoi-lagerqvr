@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const Booking = require('../models/booking')
+const Cabin = require('../models/cabin')
 const authToken = require('../middleware/authToken')
 
 // Get all users
@@ -17,15 +18,38 @@ router.post('/', authToken, async (req, res) => {
     try {
 
         const booking = new Booking({
-            cabin: req.body.cabin,
+            creator: req.author.sub,
+            address: req.body.address,
             startdate: req.body.startdate,
             enddate: req.body.enddate
         })
+        
+        const cabinExists = await Cabin.findOne({address: req.body.address}).exec()
 
-        const newBooking = await booking.save()
+        if (cabinExists) {
+            
+            const newBooking = booking.save()
 
-        res.send(newBooking)
+            res.send(newBooking)
+        } else {
+            res.send({ msg: "Cabin doesn't exist"})
+        }
 
+    } catch (error) {
+        res.status(500).send({ msg: error.message })
+    }
+})
+
+// Change/modify booking info
+router.patch('/:id', authToken, async (req, res) => {
+    try {
+        // TODO: Fix req.cabin.sub 
+        const updatedBooking = await Booking.findOneAndUpdate(
+            { _id: req.params.id , author: req.author.sub  },
+            req.body,
+            { new: true }
+        )
+        res.send({ msg: "Booking info updated", updatedBooking: updatedBooking })
     } catch (error) {
         res.status(500).send({ msg: error.message })
     }

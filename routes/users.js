@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({
         sub: user._id, // sub = Subject, user-id
         email: user.email
-    }, process.env.JWT_SECRET, { expiresIn: '1d' })
+    }, process.env.JWT_SECRET, { expiresIn: '180d' })
     res.send({ msg: 'Login succesful', token: token })
 
     /* Good way to generate random string in the node console: 

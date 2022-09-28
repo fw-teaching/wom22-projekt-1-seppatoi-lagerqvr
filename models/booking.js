@@ -2,16 +2,20 @@ const mongoose = require('mongoose')
 const cabin = require('./cabin')
 
 const bookingSchema = new mongoose.Schema({
-    cabin: {
+    creator: {
+        type: String,
+        require: true
+    },
+    address: {
         type: String,
         require: true
     },
     startdate: {
-        type: String,
+        type: Date,
         require: true
     },
     enddate: {
-        type: String,
+        type: Date,
         require: true
     }
 
