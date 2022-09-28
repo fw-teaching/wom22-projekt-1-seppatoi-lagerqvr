@@ -13,7 +13,7 @@ router.get('/', authToken, async (req, res) => {
 })
 
 // Create new user
-router.post('/', async (req, res) => {
+router.post('/', authToken, async (req, res) => {
     try {
 
         const booking = new Booking({
@@ -26,6 +26,24 @@ router.post('/', async (req, res) => {
 
         res.send(newBooking)
 
+    } catch (error) {
+        res.status(500).send({ msg: error.message })
+    }
+})
+
+// Delete booking
+router.delete('/:id', authToken, async (req, res) => {
+    try {
+        const booking = await Booking.deleteOne({
+            _id: req.params.id
+            // TODO: Fix req.landlord.sub 
+            // author: req.author.sub
+        })
+
+        if (!booking) {
+            return res.status(404).send({ msg: "Booking not found" })
+        }
+        res.send(booking)
     } catch (error) {
         res.status(500).send({ msg: error.message })
     }

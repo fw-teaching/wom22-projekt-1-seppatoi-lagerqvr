@@ -2,19 +2,44 @@
 
 ###
 
+// Get all cabins
 GET {{baseURL}}/cabins
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzg1OGVmYWVlYzEyMjdhZmM4ZDIiLCJlbWFpbCI6ImphbmUuZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDE4NjU4MiwiZXhwIjoxNjY0MjcyOTgyfQ.pxPP7Mx_OXAlVjGxhS67gaDXyjLWK9HCMfK1PlzTqoM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM1MzEzNSwiZXhwIjoxNjY0NDM5NTM1fQ.j9KMHe-DBEPI6LGSfteie4OncMGNIoabfrtCbMbiPCM
 
 
 ###
 
+// Create new cabin
 POST {{baseURL}}/cabins
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM1MzEzNSwiZXhwIjoxNjY0NDM5NTM1fQ.j9KMHe-DBEPI6LGSfteie4OncMGNIoabfrtCbMbiPCM
 
 {
+    "landlord": "Mike Wazowski",
     "address": "Romgatan 5 C",
     "size": 28,
     "sauna": false,
     "beach": false,
     "rent": 25
 }
+
+###
+
+// Patch/modify cabin data
+PATCH {{baseURL}}/cabins/6334055a161a5d84aa2d2fae
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM1MzEzNSwiZXhwIjoxNjY0NDM5NTM1fQ.j9KMHe-DBEPI6LGSfteie4OncMGNIoabfrtCbMbiPCM
+
+{
+    "address": "Romgatan 5 C",
+    "size": 28.5,
+    "sauna": false,
+    "beach": true,
+    "rent": 470
+}
+
+###
+
+// Delete cabin
+DELETE {{baseURL}}/cabins/6334055a161a5d84aa2d2fae
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM1MzEzNSwiZXhwIjoxNjY0NDM5NTM1fQ.j9KMHe-DBEPI6LGSfteie4OncMGNIoabfrtCbMbiPCM

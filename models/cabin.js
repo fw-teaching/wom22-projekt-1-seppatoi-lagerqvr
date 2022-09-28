@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const cabinSchema = new mongoose.Schema({
+    landlord: {
+        type: String,
+        require: true
+    },
     address: {
         type: String,
         require: true
@@ -19,7 +23,7 @@ const cabinSchema = new mongoose.Schema({
         type: Number,
         require: true
     }
-}, {timestamps: true})
+}, { timestamps: true })
 
 module.exports = mongoose.model(
     'Cabin', cabinSchema

@@ -14,10 +14,11 @@ router.get('/', authToken, async (req, res) => {
 
 
 // Create new cabin
-router.post('/', async (req, res) => {
+router.post('/', authToken, async (req, res) => {
     try {
 
         const cabin = new Cabin({
+            landlord: req.body.landlord,
             address: req.body.address,
             size: req.body.size,
             sauna: req.body.sauna,
@@ -29,6 +30,39 @@ router.post('/', async (req, res) => {
 
         res.send(newCabin)
 
+    } catch (error) {
+        res.status(500).send({ msg: error.message })
+    }
+})
+
+// Change/modify cabin info
+router.patch('/:id', authToken, async (req, res) => {
+    try {
+        // TODO: Fix req.landlord.sub 
+        const updatedCabin = await Cabin.findOneAndUpdate(
+            { _id: req.params.id /*, landlord: req.landlord.sub */ },
+            req.body,
+            { new: true }
+        )
+        res.send({ msg: "Cabin info updated", updatedCabin: updatedCabin })
+    } catch (error) {
+        res.status(500).send({ msg: error.message })
+    }
+})
+
+// Delete cabins
+router.delete('/:id', authToken, async (req, res) => {
+    try {
+        const cabin = await Cabin.deleteOne({
+            _id: req.params.id
+            // TODO: Fix req.landlord.sub 
+            // author: req.author.sub
+        })
+
+        if (!cabin) {
+            return res.status(404).send({ msg: "Cabin not found" })
+        }
+        res.send(cabin)
     } catch (error) {
         res.status(500).send({ msg: error.message })
     }

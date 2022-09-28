@@ -2,16 +2,25 @@
 
 ###
 
+// Get all bookings
 GET {{baseURL}}/bookings
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzg1OGVmYWVlYzEyMjdhZmM4ZDIiLCJlbWFpbCI6ImphbmUuZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDE4NjU4MiwiZXhwIjoxNjY0MjcyOTgyfQ.pxPP7Mx_OXAlVjGxhS67gaDXyjLWK9HCMfK1PlzTqoM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM1MzEzNSwiZXhwIjoxNjY0NDM5NTM1fQ.j9KMHe-DBEPI6LGSfteie4OncMGNIoabfrtCbMbiPCM
 
 ###
 
+// Create booking 
 POST {{baseURL}}/bookings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM1MzEzNSwiZXhwIjoxNjY0NDM5NTM1fQ.j9KMHe-DBEPI6LGSfteie4OncMGNIoabfrtCbMbiPCM
 Content-Type: application/json
 
 {
-    "cabin": "Jan-Magnus-Jansson",
+    "cabin": "Jan-Magnus-Jansson 6 A 27",
     "startdate": "20-12-2022",
     "enddate": "25-12-2022"
 }
+
+###
+
+// Delete booking
+DELETE {{baseURL}}/bookings/63340c828c03a143185d02d9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM1MzEzNSwiZXhwIjoxNjY0NDM5NTM1fQ.j9KMHe-DBEPI6LGSfteie4OncMGNIoabfrtCbMbiPCM
