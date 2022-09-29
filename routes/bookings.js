@@ -7,13 +7,13 @@ const Booking = require('../models/booking')
 const Cabin = require('../models/cabin')
 const authToken = require('../middleware/authToken')
 
-// Get all users
+// Get bookings
 router.get('/', authToken, async (req, res) => {
     const bookings = await Booking.find()
     res.send(bookings)
 })
 
-// Create new user
+// Create new booking
 router.post('/', authToken, async (req, res) => {
     try {
 
@@ -22,9 +22,11 @@ router.post('/', authToken, async (req, res) => {
         } catch (error) {
             return res.send({ msg: "No such cabin in database" })
         }
+        
+        
 
         const book = await Booking.findOne({
-            cabin: req.body.cabin,
+            address: req.body.address,
             startdate: { $lt: req.body.enddate },
             enddate: { $gt: req.body.startdate }
         }).exec()
@@ -33,8 +35,8 @@ router.post('/', authToken, async (req, res) => {
         }
 
         const booking = new Booking({
-            author: req.author.sub,
-            cabin: req.body.cabin,
+            creator: req.author.sub,
+            address: req.body.address,
             startdate: req.body.startdate,
             enddate: req.body.enddate
 
