@@ -1,6 +1,6 @@
 @baseURL = http://localhost:3030
 
-@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDM2NDI0NiwiZXhwIjoxNjc5OTE2MjQ2fQ.wu7qhypMQwF4dWdu3SJeLywk8JjejNWWKPwkd1SlDWM
+@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDQ1ODIyMCwiZXhwIjoxNjgwMDEwMjIwfQ.-sOtJaJ-XGXR8ZnVwNtq8YPiiW-r96pm458T3z0qhEs
 
 ###
 
@@ -17,8 +17,8 @@ Content-Type: application/json
 
 {
     "address": "Cabin street 22",
-    "startdate": "2022-10-20",
-    "enddate": "2022-10-25"
+    "startdate": "2022-10-26",
+    "enddate": "2022-10-30"
 }
 
 ###
