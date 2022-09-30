@@ -1,7 +1,8 @@
 @baseURL = http://localhost:3030
 
-@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDQ2MjA5MCwiZXhwIjoxNjgwMDE0MDkwfQ.-VlBsvmRLEPkh02LERdCoTkZPuqzybfW2ILk_DJSJXg
+@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzg1OGVmYWVlYzEyMjdhZmM4ZDIiLCJlbWFpbCI6ImphbmUuZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDU0MTIwOSwiZXhwIjoxNjgwMDkzMjA5fQ.0jPRH3e1L_Toeu4xYyZ7Lc7siSaq8JG1UFVOVUykIXQ
 
+@id = 63317858efaeec1227afc8d2
 ###
 
 // Get all bookings
@@ -16,24 +17,24 @@ Authorization: Bearer {{bearer}}
 Content-Type: application/json
 
 {
-    "address": "Toivo street",
-    "startdate": "2022-10-26",
-    "enddate": "2022-10-30"
+    "address": "Rasmus avenue",
+    "startdate": "2022-11-31",
+    "enddate": "2022-12-1"
 }
 
 ###
 
 // Modify booking
-PATCH  {{baseURL}}/bookings/633191d8abd631659501ecca
+PATCH  {{baseURL}}/bookings/6336dc08650fd5c49da44098
 Authorization: Bearer {{bearer}}
 Content-Type: application/json
 
 {
-    "enddate": "27-12-2022"
+    "address": "Rasmus avenue"
 }
 
 ###
 
 // Delete booking
-DELETE {{baseURL}}/bookings/633436b0867c39b442477df0
+DELETE {{baseURL}}/bookings/6336e23b9bd991ec4e28ca15
 Authorization: Bearer {{bearer}}

@@ -1,5 +1,5 @@
 @baseURL = http://localhost:3030
-@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDQ2MjA5MCwiZXhwIjoxNjgwMDE0MDkwfQ.-VlBsvmRLEPkh02LERdCoTkZPuqzybfW2ILk_DJSJXg
+@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzg1OGVmYWVlYzEyMjdhZmM4ZDIiLCJlbWFpbCI6ImphbmUuZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDUzNzkyNiwiZXhwIjoxNjgwMDg5OTI2fQ.vXMbkl0Uj0P-wI0vCaddguhqukwTjPNiJGb6EVs5_Zw
 
 ###
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 Authorization: Bearer {{bearer}}
 
 {
-    "address": "Toivo street"
+    "address": "Cabin street"
 }
 
 ###

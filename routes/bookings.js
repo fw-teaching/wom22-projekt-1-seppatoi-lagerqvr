@@ -16,35 +16,36 @@ router.get('/', authToken, async (req, res) => {
 // Create new booking
 router.post('/', authToken, async (req, res) => {
     try {
+        const cabinFound = await Cabin.findOne({ address: req.body.address })
 
-        try {
-            const cabinFound = await Cabin.findOne({ _id: req.body.cabin })
-        } catch (error) {
+        if (cabinFound) {
+        
+            const book = await Booking.findOne({
+                address: req.body.address,
+                startdate: { $lt: req.body.enddate },
+                enddate: { $gt: req.body.startdate }
+            }).exec()
+            if (book) {
+                return res.send({ msg: "Selected time for booking not available" })
+            }
+
+            const booking = new Booking({
+                creator: req.author.sub,
+                address: req.body.address,
+                startdate: req.body.startdate,
+                enddate: req.body.enddate
+
+            })
+
+            const newBooking = await booking.save()
+
+            res.send({ saved: newBooking })
+        } else {
             return res.send({ msg: "No such cabin in database" })
         }
+  
         
-        
 
-        const book = await Booking.findOne({
-            address: req.body.address,
-            startdate: { $lt: req.body.enddate },
-            enddate: { $gt: req.body.startdate }
-        }).exec()
-        if (book) {
-            return res.send({ msg: "Selected time for booking not available" })
-        }
-
-        const booking = new Booking({
-            creator: req.author.sub,
-            address: req.body.address,
-            startdate: req.body.startdate,
-            enddate: req.body.enddate
-
-        })
-
-        const newBooking = await booking.save()
-
-        res.send({ saved: newBooking })
 
     } catch (error) {
         res.status(500).send({ msg: error.message })
@@ -52,15 +53,22 @@ router.post('/', authToken, async (req, res) => {
 })
 
 // Change/modify booking info
-router.patch('/:id', authToken, async (req, res) => {
+router.patch('/:id/', authToken, async (req, res) => {
     try {
-        // TODO: Fix req.cabin.sub 
+        
         const updatedBooking = await Booking.findOneAndUpdate(
-            { _id: req.params.id, author: req.author.sub },
+            { _id: req.params.id, creator: req.author.sub },
             req.body,
             { new: true }
         )
-        res.send({ msg: "Booking info updated", updatedBooking: updatedBooking })
+        if (updatedBooking) {
+            res.send({ msg: "Booking info updated", updatedBooking: updatedBooking })
+        } else {
+            res.send({ msg: "Can't update another users booking" })
+        }
+        
+        
+        
     } catch (error) {
         res.status(500).send({ msg: error.message })
     }
@@ -70,9 +78,7 @@ router.patch('/:id', authToken, async (req, res) => {
 router.delete('/:id', authToken, async (req, res) => {
     try {
         const booking = await Booking.deleteOne({
-            _id: req.params.id
-            // TODO: Fix req.landlord.sub 
-            // author: req.author.sub
+            _id: req.params.id, creator: req.author.sub
         })
 
         if (!booking) {

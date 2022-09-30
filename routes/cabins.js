@@ -40,11 +40,18 @@ router.patch('/:id', authToken, async (req, res) => {
     try {
         // TODO: Fix req.landlord.sub 
         const updatedCabin = await Cabin.findOneAndUpdate(
-            { _id: req.params.id,  author: req.author.sub  },
+            { _id: req.params.id,  landlord: req.author.sub  },
             req.body,
             { new: true }
         )
-        res.send({ msg: "Cabin info updated", updatedCabin: updatedCabin })
+
+        if (updatedCabin) {
+            res.send({ msg: "Cabin info updated", updatedCabin: updatedCabin })
+        } else {
+            res.send({ msg: "Can't update another users cabin" })
+        }
+
+        
     } catch (error) {
         res.status(500).send({ msg: error.message })
     }
@@ -54,9 +61,7 @@ router.patch('/:id', authToken, async (req, res) => {
 router.delete('/:id', authToken, async (req, res) => {
     try {
         const cabin = await Cabin.deleteOne({
-            _id: req.params.id
-            // TODO: Fix req.landlord.sub 
-            // author: req.author.sub
+            _id: req.params.id, landlord: req.author.sub
         })
 
         if (!cabin) {

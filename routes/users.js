@@ -29,7 +29,9 @@ router.post('/login', async (req, res) => {
         sub: user._id, // sub = Subject, user-id
         email: user.email
     }, process.env.JWT_SECRET, { expiresIn: '180d' })
-    res.send({ msg: 'Login succesful', token: token })
+    res.send({ msg: 'Login succesful',
+        token: token,
+        id: user._id })
 
     /* Good way to generate random string in the node console: 
     require('crypto').randomBytes(32).toString('hex') */
