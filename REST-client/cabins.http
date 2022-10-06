@@ -1,10 +1,15 @@
 @baseURL = http://localhost:3030
-@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzg1OGVmYWVlYzEyMjdhZmM4ZDIiLCJlbWFpbCI6ImphbmUuZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NDUzNzkyNiwiZXhwIjoxNjgwMDg5OTI2fQ.vXMbkl0Uj0P-wI0vCaddguhqukwTjPNiJGb6EVs5_Zw
+@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzNmMTFjYTg3NTA2MDQwNzUwNTZkY2UiLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NTA3Nzk1MSwiZXhwIjoxNjgwNjI5OTUxfQ.2UA0khjtUjLpd9PAV3r-o0q_-aAL0t-IdCEa7F8dl0U
 
 ###
 
 // Get all cabins
 GET {{baseURL}}/cabins
+Authorization: Bearer {{bearer}}
+
+###
+
+GET {{baseURL}}/cabins/owned
 Authorization: Bearer {{bearer}}
 
 ###
@@ -16,10 +21,10 @@ Authorization: Bearer {{bearer}}
 
 {
     "address": "Rasmus' cabin",
-    "size": 28,
-    "sauna": false,
-    "beach": false,
-    "rent": 25
+    "size": 250,
+    "sauna": true,
+    "beach": true,
+    "rent": 300
 }
 
 ###
