@@ -12,6 +12,14 @@ router.get('/', authToken, async (req, res) => {
     res.send(cabins)
 })
 
+// Get your cabins
+router.get('/owned', authToken, async (req, res) => {
+    const yourCabins = await Cabin.find(
+        { landlord: req.author.sub  }
+    )
+    res.send(yourCabins)
+})
+
 
 // Create new cabin
 router.post('/', authToken, async (req, res) => {
