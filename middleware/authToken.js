@@ -18,7 +18,8 @@ module.exports = (req, res, next) => {
         console.log(error.message)
         return res.status(401).json({
             msg: "Authorization failed",
-            error: error.message
+            error: error.message,
+            headers: JSON.stringify(req.headers)
         })
 
     }

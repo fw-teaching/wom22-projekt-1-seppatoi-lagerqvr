@@ -1,5 +1,5 @@
 @baseURL = http://localhost:3030
-@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzNmMTFjYTg3NTA2MDQwNzUwNTZkY2UiLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NTA3NzgzOCwiZXhwIjoxNjgwNjI5ODM4fQ.0Z9gYjtcogS1qQt7NVPB7Pd9GKxxhmdPmJSG6GlaHko
+@bearer = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzMxNzkxNGVmYWVlYzEyMjdhZmM4ZDciLCJlbWFpbCI6ImpvaG4uZG9lQGFyY2FkYS5maSIsImlhdCI6MTY2NTc1MTgyNywiZXhwIjoxNjgxMzAzODI3fQ.TinJqj2kIIBWtuvw9sBkHFycdZ6IG2FMmHrOFLkQq0c
 
 
 ###
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
     "email": "john.doe@arcada.fi",
-    "password": "1234567"
+    "password": "Password123"
 }
 
 ###
