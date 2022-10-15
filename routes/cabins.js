@@ -7,7 +7,7 @@ const Cabin = require('../models/cabin')
 const authToken = require('../middleware/authToken')
 
 // Get all cabins
-router.get('/', authToken, async (req, res) => {
+router.get('/', async (req, res) => {
     const cabins = await Cabin.find()
     res.send(cabins)
 })
